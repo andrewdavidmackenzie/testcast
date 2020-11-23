@@ -60,7 +60,9 @@ public class TestController implements GameController {
                 break;
 
             case NO_ROUTE_AVAILABLE:
-                testView.setMessage(R.string.noRoute);
+//                testView.setMessage(R.string.noRoute);
+                // TODO not sure why this is the last event we get
+                testView.setMessage(R.string.selectRoute);
                 break;
 
             case ROUTE_AVAILABLE:
