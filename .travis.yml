@@ -14,4 +14,4 @@ branches:
   only:
     - "master"
 
-script: script: cd android && ./gradlew build
+script: cd android && ./gradlew build
