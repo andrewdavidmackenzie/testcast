@@ -1,1 +1,4 @@
 android/android/build
+android/.gradle
+**/*.idea
+**/*.iml
