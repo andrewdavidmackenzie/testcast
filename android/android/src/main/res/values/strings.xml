@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name" translatable="false">TestCast</string>
+
+	<!-- Get your Chromecast applications app_id from the console at https://cast.google.com/publish/#/overview -->
+    <string name="app_id" translatable="false">F49FA7A3</string>
+	<!-- This must match the one defined in the receiver.html -->
+    <string name="namespace" translatable="false">urn:x-cast:net.mackenzie.testcast</string>
+
+	<!-- Translatable strings below -->
+	<string name="language">Default</string>
+    <string name="media_route_menu_title">Test Chromecast&#8230;</string>
+	<string name="action_settings">Settings</string>
+    <string name="connecting">Connecting…</string>
+    <string name="noRoute">No Chromecasts found, make sure it is powered on</string>
+    <string name="selectRoute">Select a Chromecast to play on</string>
+    <string name="enableWifi">You must enable WiFi to find Chromecast devices</string>
+    <string name="connected">Connected to Chromecast</string>
+    <string name="disconnected">Disconnected from Chromecast</string>
+    <string name="ready">Chromecast should be showing test running</string>
+</resources>

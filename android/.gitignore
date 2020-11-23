@@ -1,6 +1,3 @@
-gen
-out
-build
-.gradle
-*.apk
-proguard_logs
+.idea
+castCompanionLibrary
+android/build
