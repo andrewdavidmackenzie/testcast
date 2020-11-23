@@ -9,4 +9,4 @@ branches:
   only:
     - "master"
 
-script: script: cd androiw && ./gradlew connectedAndroidTest
+script: script: cd androiw && ./gradlew build
