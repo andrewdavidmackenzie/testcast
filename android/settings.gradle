@@ -1,2 +1,3 @@
-include ':castCompanionLibrary'
+include ':ChromeInteractor'
+include ':ChromeInteractor-release'
 include ':android'
