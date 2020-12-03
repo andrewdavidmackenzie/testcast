@@ -7,13 +7,13 @@ import android.view.Menu;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-import net.mackenzie.chromecast.ChromecastInteractor;
+import net.mackenzie.chromeinteractor.ChromecastInteractor;
 
 /**
  * Main activity of the application
  */
 public class MainActivity extends AppCompatActivity {
-    private ChromecastInteractor chromecast;
+    private ChromecastInteractor chromecastInteractor;
     private TestControllerView testControllerView;
 
     @Override
@@ -22,29 +22,25 @@ public class MainActivity extends AppCompatActivity {
 
         TestController testController = new TestController();
         testControllerView = new TestControllerView(this, getString(R.string.app_id), testController);
-        chromecast = new ChromecastInteractor(this, getString(R.string.app_id), getString(R.string.namespace),
-                testControllerView.getMediaSelector(), testController);
+        chromecastInteractor = new ChromecastInteractor(this, getString(R.string.app_id), getString(R.string.namespace),
+                testController);
     }
 
     @Override
     protected void onPause() {
-        // TODO try doing this always to make synetrical with onResume()
-        if (isFinishing()) {
-            chromecast.pause();
-        }
+        chromecastInteractor.pause();
         super.onPause();
     }
 
-    // TODO Avoid Pause/Resume on first rotation
     @Override
     protected void onResume() {
         super.onResume();
-        chromecast.resume();
+        chromecastInteractor.resume();
     }
 
     @Override
     public void onDestroy() {
-        chromecast.disconnect();
+        chromecastInteractor.disconnect();
         super.onDestroy();
     }
 

@@ -1,12 +1,12 @@
 package net.mackenzie.testcast;
 
+import android.app.Activity;
 import android.util.Log;
 
 import androidx.annotation.NonNull;
 
-import net.mackenzie.chromecast.ChromecastInteractor;
-import net.mackenzie.chromecast.ChromecastInteractor.CHROMECAST_EVENT;
-import net.mackenzie.chromecast.GameController;
+import net.mackenzie.chromeinteractor.ChromecastInteractor;
+import net.mackenzie.chromeinteractor.GameController;
 
 /**
  * This class implements control of the Tests, implementing the GameController Interface that permits it to
@@ -23,10 +23,9 @@ import net.mackenzie.chromecast.GameController;
  */
 public class TestController implements GameController {
     // CONSTANTS
-    private static final String TAG = "TestController";
+    private static final String LOG_TAG = "TestController";
 
     // MUTABLES
-    private ChromecastInteractor chromecast;
     private TestControllerView testView;
 
     public TestController() {
@@ -43,26 +42,23 @@ public class TestController implements GameController {
      */
     @Override
     public void setChromecastInteractor(@NonNull final ChromecastInteractor chromecastInteractor) {
-        this.chromecast = chromecastInteractor;
     }
 
     /**
-     * Handle events coming from the chromecast
+     * Handle new state coming from the chromecast
      *
-     * @param event ChromecastInteractor.CHROMECAST_EVENT to process
+     * @param newState - the new ChromecastInteractor.CHROMECAST_STATE
      */
     @Override
-    public void chromecastEvent(@NonNull final CHROMECAST_EVENT event) {
-        Log.d(TAG, "Chromecast event: " + event.toString());
-        switch (event) {
+    public void newChromecastState(@NonNull final ChromecastInteractor.CHROMECAST_STATE newState) {
+        Log.d(LOG_TAG, "Chromecast newState: " + newState);
+        switch (newState) {
             case NO_WIFI:
                 testView.setMessage(R.string.enableWifi);
                 break;
 
             case NO_ROUTE_AVAILABLE:
-//                testView.setMessage(R.string.noRoute);
-                // TODO not sure why this is the last event we get
-                testView.setMessage(R.string.selectRoute);
+                testView.setMessage(R.string.noRoute);
                 break;
 
             case ROUTE_AVAILABLE:
@@ -88,11 +84,13 @@ public class TestController implements GameController {
     }
 
     /**
-     * Parse a message from the chromecast controller and modify view state and react accordingly
+     * Parse a message from the receiver app
+     *
      * @param message from chromecast to parse
      */
     @Override
-    public void parseMessage(@NonNull final String message) {
+    public void receiverMessage(@NonNull final String message) {
+        Log.i(LOG_TAG, "Receiver Message: " + message);
     }
 }
 
