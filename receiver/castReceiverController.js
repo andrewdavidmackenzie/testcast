@@ -11,6 +11,7 @@ function CastController() {
 
     // handler for the 'ready' event
     castReceiverManager.onReady = function () {
+    console.log("onReady()");
         //noinspection JSUnresolvedVariable,JSUnresolvedFunction
         window.castReceiverManager.setApplicationState("Started");
     };
@@ -19,7 +20,7 @@ function CastController() {
     castReceiverManager.onSenderConnected = function (event) {
         //noinspection JSUnresolvedVariable
         var name = event.senderId;
-        console.log("Connected: " + name);
+        console.log("onSenderConnected: " + name);
 
         //noinspection JSUnresolvedFunction,JSUnresolvedVariable
         var senderChannel = window.messageBus.getCastChannel(event.senderId);
